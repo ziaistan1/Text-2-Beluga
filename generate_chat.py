@@ -6,6 +6,8 @@ import os
 from tkinter import Tk, filedialog
 import json
 from compile_video import *
+from google.colab import files
+
 
 # CONSTANTS
 WORLD_WIDTH = 1777
@@ -71,8 +73,7 @@ def generate_chat(messages, name, time, profpic_file, color):
             pilmoji.text(MESSAGE_POSITIONS[i], message.strip(), MESSAGE_FONT_COLOR, font=message_font)
             
     return template
-
-from google.colab import files
+    
 
 def get_filename():
     uploaded = files.upload()
@@ -94,7 +95,7 @@ def save_images(lines, init_time, nums_to_skip, dt=30):
     for line in lines:
         # If line is empty (signifying end of message chain)
         if line == '':
-            name_up_next=True
+           name_up_next=True
             current_lines = []
             continue
         
