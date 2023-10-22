@@ -72,10 +72,13 @@ def generate_chat(messages, name, time, profpic_file, color):
             
     return template
 
+from google.colab import files
+
 def get_filename():
-    root = Tk()
-    root.withdraw()
-    root.attributes('-topmost', True)
+    uploaded = files.upload()
+    for filename in uploaded.keys():
+        return filename
+        
     
     return filedialog.askopenfilename()
 
