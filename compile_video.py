@@ -1,6 +1,6 @@
 import os
 
-def gen_vid(filename, sound_effect_file):
+def gen_vid(filename):
     input_folder = 'chat/'
 
     # Get all image files in the input folder
@@ -23,6 +23,7 @@ def gen_vid(filename, sound_effect_file):
             else:
                 durations.append(line.split('$^')[1])
                 
+                
     # Create a text file to store the image paths
     with open('image_paths.txt', 'w') as file:    
         count = 0
@@ -34,7 +35,7 @@ def gen_vid(filename, sound_effect_file):
     video_height = 1920
 
     # Generate the video using the text file containing image paths and calculated frame rate
-    os.system(f"ffmpeg -f concat -i image_paths.txt -vcodec libx264 -crf 25 -vf 'scale={video_width}:{video_height}:force_original_aspect_ratio=decrease,pad={video_width}:{video_height}:(ow-iw)/2:(oh-ih)/2' -pix_fmt yuv420p -i {sound_effect_file} -shortest output.mp4")
+    os.system(f"ffmpeg -f concat -i image_paths.txt -vcodec libx264 -crf 25 -vf 'scale={video_width}:{video_height}:force_original_aspect_ratio=decrease,pad={video_width}:{video_height}:(ow-iw)/2:(oh-ih)/2' -pix_fmt yuv420p output.mp4")
 
     # Remove the temporary text file
     os.remove('image_paths.txt')
