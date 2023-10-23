@@ -1,5 +1,7 @@
 import os
 
+sound_effect_file = 'a.mp3'
+
 def gen_vid(filename, sound_effect_file):
     input_folder = 'chat/'
 
