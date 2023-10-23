@@ -31,8 +31,8 @@ def gen_vid(filename):
             file.write(f"file '{input_folder}{image_file}'\noutpoint {durations[count]}\n")
             count += 1
 
-    video_width = 5120
-    video_height = 2880
+    video_width = 1920
+    video_height = 1280
 
     # Generate the video using the text file containing image paths and calculated frame rate
     os.system(f"ffmpeg -f concat -i image_paths.txt -vcodec libx264 -crf 25 -vf 'scale={video_width}:{video_height}:force_original_aspect_ratio=decrease,pad={video_width}:{video_height}:(ow-iw)/2:(oh-ih)/2' -pix_fmt yuv420p output.mp4")
